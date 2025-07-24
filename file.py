@@ -1,5 +1,9 @@
 import plotly.express as px
 import pandas as pd
+import streamlit as st  # Добавляем Streamlit
+
+# Заголовок дашборда
+st.title("Население городов России")
 
 # Создаем тестовый DataFrame
 data = pd.DataFrame({
@@ -15,8 +19,8 @@ fig = px.bar(
     y="Население (млн)",
     color="Город",
     title="Население городов России",
-    hover_data=["Достопримечательность"],  # Доп. информация при наведении
-    text="Население (млн)"  # Отображаем значения на столбцах
+    hover_data=["Достопримечательность"],
+    text="Население (млн)"
 )
 
 # Настраиваем hover (подсказки)
@@ -26,14 +30,11 @@ fig.update_traces(
 
 # Улучшаем внешний вид
 fig.update_layout(
-    plot_bgcolor="rgba(240,240,240,1)",  # Светло-серый фон
-    paper_bgcolor="white",  # Белый фон вокруг графика
+    plot_bgcolor="rgba(240,240,240,1)",
+    paper_bgcolor="white",
     font=dict(family="Arial", size=12),
     hoverlabel=dict(bgcolor="white", font_size=12)
 )
 
-# Сохраняем в HTML (открывается в браузере)
-fig.write_html("russia_cities.html")
-
-# Показываем график в Jupyter/Colab (если нужно)
-fig.show()
+# Отображаем график в Streamlit
+st.plotly_chart(fig, use_container_width=True)  # Ключевая строка!
