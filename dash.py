@@ -173,6 +173,9 @@ all_uniq_used_attnames2 = list(set(all_used_attnames2))
 # print(sorted(all_used_attnames2)[:100])
 st.write(f'Количество уникальных атрибутов используемых в проекте: {len(all_uniq_used_attnames2)}')
 st.write(sorted(all_uniq_used_attnames2))
+
+with st.expander(f"Количество уникальных атрибутов: {len(all_uniq_used_attnames2)}", expanded=False):
+    st.write(sorted(all_uniq_used_attnames2))
 # st.write(len(all_used_attnames2))
 # st.write(sorted(all_used_attnames2[:100]))
 
