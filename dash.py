@@ -159,7 +159,7 @@ all_uniq_used_attnames2 = list(set(all_used_attnames2))
 st.write(len(all_uniq_used_attnames2))
 st.write(sorted(all_uniq_used_attnames2))
 st.write(len(all_used_attnames2))
-st.write(sorted(all_used_attnames2)[:100])
+st.write(sorted(all_used_attnames2[:100]))
 
 
 
