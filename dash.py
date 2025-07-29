@@ -114,3 +114,62 @@ otchet_diffs = pd.DataFrame(
 
 st.write("Таблица разности атрибутов:")
 st.dataframe(otchet_diffs)
+
+
+st.divider()
+
+p = Path("used_att_data.txt")
+
+with p.open(encoding='utf-16 le') as f:
+    data_rows = []
+    for line in f:
+        d = line.strip().split(',')
+        # print(d)
+        new_row = {
+                            'V1.3': d[0],
+                            'OWNER': d[1],
+                            'END': d[2],
+                            'ATTNAME': d[3],
+                            'ATTVALUE': d[4],
+                            'ATTDREF': d[5],
+                            'ATTVARI': d[6],
+                            'ATTVALID': d[7],
+                            'ATTFLGS2': d[8]
+                        }
+
+        data_rows.append(new_row)
+    
+
+
+all_used_proj_att_data2 = pd.DataFrame(data=data_rows[1:],columns= ['V1.3','OWNER','END','ATTNAME','ATTVALUE','ATTDREF','ATTVARI','ATTVALID','ATTFLGS2'])
+#assert(all_used_proj_att_data2.equals(all_used_proj_att_data))
+
+
+all_used_attnames2 = all_used_proj_att_data2['ATTNAME'].tolist()
+all_uniq_used_attnames2 = list(set(all_used_attnames2))
+#assert(all_uniq_used_attnames2 == all_uniq_used_attnames)
+
+
+
+# print(len(all_uniq_used_attnames2))
+# print(sorted(all_uniq_used_attnames2))
+# print(len(all_used_attnames2))
+# print(sorted(all_used_attnames2)[:100])
+
+st.write(len(all_uniq_used_attnames2))
+st.write(sorted(all_uniq_used_attnames2))
+st.write(len(all_used_attnames2))
+st.write(sorted(all_used_attnames2)[:100])
+
+
+
+inter_uniq_used_attnames_vs_proj_attnames = set(all_uniq_used_attnames2) & set(proj_attnames2)
+inter_uniq_used_attnames_vs_acc_attnames = set(all_uniq_used_attnames2) & set(acc_attnames2)
+inter_uniq_used_attnames_vs_or_attnames = set(all_uniq_used_attnames2) & set(or_attnames2)
+# print(len(inter_uniq_used_attnames_vs_proj_attnames))
+# print(len(inter_uniq_used_attnames_vs_acc_attnames))
+# print(len(inter_uniq_used_attnames_vs_or_attnames))
+st.write(len(inter_uniq_used_attnames_vs_proj_attnames))
+st.write(len(inter_uniq_used_attnames_vs_acc_attnames))
+st.write(len(inter_uniq_used_attnames_vs_or_attnames))
+
