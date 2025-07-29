@@ -171,8 +171,8 @@ all_uniq_used_attnames2 = list(set(all_used_attnames2))
 # print(sorted(all_uniq_used_attnames2))
 # print(len(all_used_attnames2))
 # print(sorted(all_used_attnames2)[:100])
-st.write(f'Количество уникальных атрибутов используемых в проекте: {len(all_uniq_used_attnames2)}')
-st.write(sorted(all_uniq_used_attnames2))
+# st.write(f'Количество уникальных атрибутов используемых в проекте: {len(all_uniq_used_attnames2)}')
+# st.write(sorted(all_uniq_used_attnames2))
 
 with st.expander(f"Количество уникальных атрибутов: {len(all_uniq_used_attnames2)}", expanded=False):
     st.write(sorted(all_uniq_used_attnames2))
@@ -188,10 +188,11 @@ inter_uniq_used_attnames_vs_or_attnames = set(all_uniq_used_attnames2) & set(or_
 # print(len(inter_uniq_used_attnames_vs_acc_attnames))
 # print(len(inter_uniq_used_attnames_vs_or_attnames))
 st.write("Диаграммы пересечения уникальных атрибутов:")
-st.write("U - использованные атрибуты в проекте \n " \
-        " A - декларированные атрибуты в проекте\n" \
-        " B - Атрибуты из локальной базы данных\n" \
-        " С - Атрибуты из стевой базы данных\n")
+st.write("U - использованные атрибуты в проекте")
+st.write(" A - декларированные атрибуты в проекте")
+st.write(" B - Атрибуты из локальной базы данных")
+st.write(" С - Атрибуты из стевой базы данных\n")
+
 st.write(f'количество атрибутов  U ∩ A: {len(inter_uniq_used_attnames_vs_proj_attnames)}')
 st.write(f'количество атрибутов  U ∩ B: {len(inter_uniq_used_attnames_vs_acc_attnames)}')
 st.write(f'количество атрибутов  U ∩ C: {len(inter_uniq_used_attnames_vs_or_attnames)}')
