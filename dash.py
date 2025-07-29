@@ -3,6 +3,12 @@ from pathlib import Path
 import streamlit as st
 import pandas as pd
 
+
+
+
+st.header('Сравнение существующих уникальных атрибутов из 3х источников')
+
+
 p_loc = Path("local_bd_attnames.txt")
 p_net = Path("network_bd_attnames.txt")
 p_proj = Path('proj_bd_attnames.txt')
@@ -116,7 +122,17 @@ st.write("Таблица разности атрибутов:")
 st.dataframe(otchet_diffs)
 
 
+
+
+
 st.divider()
+
+
+
+
+st.header('Статистика использования атрибутов в проекте')
+
+
 
 p = Path("used_att_data.txt")
 
@@ -155,11 +171,10 @@ all_uniq_used_attnames2 = list(set(all_used_attnames2))
 # print(sorted(all_uniq_used_attnames2))
 # print(len(all_used_attnames2))
 # print(sorted(all_used_attnames2)[:100])
-
-st.write(len(all_uniq_used_attnames2))
+st.write(f'Количество уникальных атрибутов используемых в проекте: {len(all_uniq_used_attnames2)}')
 st.write(sorted(all_uniq_used_attnames2))
-st.write(len(all_used_attnames2))
-st.write(sorted(all_used_attnames2[:100]))
+# st.write(len(all_used_attnames2))
+# st.write(sorted(all_used_attnames2[:100]))
 
 
 
@@ -169,7 +184,12 @@ inter_uniq_used_attnames_vs_or_attnames = set(all_uniq_used_attnames2) & set(or_
 # print(len(inter_uniq_used_attnames_vs_proj_attnames))
 # print(len(inter_uniq_used_attnames_vs_acc_attnames))
 # print(len(inter_uniq_used_attnames_vs_or_attnames))
-st.write(len(inter_uniq_used_attnames_vs_proj_attnames))
-st.write(len(inter_uniq_used_attnames_vs_acc_attnames))
-st.write(len(inter_uniq_used_attnames_vs_or_attnames))
+st.write("Диаграммы пересечения уникальных атрибутов:")
+st.write("U - использованные атрибуты в проекте \n " \
+        " A - декларированные атрибуты в проекте\n" \
+        " B - Атрибуты из локальной базы данных\n" \
+        " С - Атрибуты из стевой базы данных\n")
+st.write(f'количество атрибутов  U ∩ A: {len(inter_uniq_used_attnames_vs_proj_attnames)}')
+st.write(f'количество атрибутов  U ∩ B: {len(inter_uniq_used_attnames_vs_acc_attnames)}')
+st.write(f'количество атрибутов  U ∩ C: {len(inter_uniq_used_attnames_vs_or_attnames)}')
 
